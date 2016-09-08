@@ -9,6 +9,8 @@
 import Foundation
 
 
+// Desligado, valocidade baixa, velocidade media, velocidade alta
+
 enum Velocidades:Int{
     case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120
     
@@ -18,36 +20,41 @@ enum Velocidades:Int{
     
 }
 
+
+
 class Auto {
     var velocidad:Velocidades
     init(){
         velocidad = Velocidades(velocidadInicial: .Apagado)
     }
     
-    func cambioDeVelocidad() -> ( actual : Int, velocidadEnCadena: String){
-        var legenda = ""
-        let actual = velocidad.rawValue
+    func cambioDeVelocidad() -> ( atual : Int, velocidadEnCadena: String){
+        var status = ""
+        let atual = velocidad.rawValue
         switch velocidad {
         case .Apagado:
             velocidad = .VelocidadBaja
-            legenda = "Apagado"
+            status = "Apagado"
         case .VelocidadBaja:
             velocidad = .VelocidadMedia
-            legenda = "Velocidad Baja"
+            status = "Velocidad Baja"
         case .VelocidadMedia:
             velocidad = .VelocidadAlta
-            legenda = "Velocidad Media"
+            status = "Velocidad Media"
         case .VelocidadAlta:
             velocidad = .Apagado
-            legenda = "Velocidad Alta"
+            status = "Velocidad Alta"
         }
-        return (actual, legenda)
+        return (atual, status)
     }
     
 }
 
+// interaçao com 20 numeros
+
+
 let auto = Auto()
 for i in 1...20 {
     let result = auto.cambioDeVelocidad()
-    print("\(i). \(result.actual), \(result.velocidadEnCadena)")
+    print("\(i). \(result.atual), \(result.velocidadEnCadena)")
 }
